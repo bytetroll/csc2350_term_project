@@ -24,56 +24,55 @@
 <div class="header-container">
     <header class="wrapper clearfix">
         <div id="title">
-        <h1 class="title">Quizzer</h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-        </nav>
+            <h1 class="title">Quizzer</h1>
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
 
+            <script>
+                document.getElementById( "title" ).onclick = function() {
+                    window.location = "home.html";
+                }
+            </script>
         </div>
-
-        <script>
-            document.getElementById( "title" ).onclick = function() {
-                window.location = "home.html";
-            }
-        </script>
     </header>
 </div>
 
 <div class="main-container">
     <div class="main wrapper clearfix">
 
-        <form method="post" action="php/login.php">
-            <table align="center" width="30%" border="0">
-                <tr>
-                    <td>
-                        <input type="text" name="Username" placeholder="Username" required />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="email" name="Email" placeholder="Email" required />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="password" name="Password" placeholder="Password" required />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit" name="Login"> Login </button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+        <article>
+            <header>
+                <h1>Open Source Licenses</h1>
+            </header>
+            <section>
+                <h2>StartBootstrap - SB</h2>
+                <p>The MIT License (MIT)
+
+                    Copyright (c) 2013-2016 Blackrock Digital LLC.
+
+                    Permission is hereby granted, free of charge, to any person obtaining a copy
+                    of this software and associated documentation files (the "Software"), to deal
+                    in the Software without restriction, including without limitation the rights
+                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                    copies of the Software, and to permit persons to whom the Software is
+                    furnished to do so, subject to the following conditions:
+
+                    The above copyright notice and this permission notice shall be included in
+                    all copies or substantial portions of the Software.
+
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+                    THE SOFTWARE.</p>
+            </section>
+        </article>
 
     </div> <!-- #main -->
 </div> <!-- #main-container -->
@@ -81,7 +80,6 @@
 <div class="footer-container">
     <footer class="wrapper">
         <h3>Madonna CSC2350 Term Project | Nathan Young</h3>
-        <a href="license.html">Open Source Licenses</a>
     </footer>
 </div>
 
