@@ -67,7 +67,7 @@ body {
 
 .title:hover {
     color: firebrick;
-    cursor: crosshair;
+    cursor: pointer;
 }
 
 /* ===================
