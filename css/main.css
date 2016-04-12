@@ -65,6 +65,11 @@ body {
     margin: 0 5%;
 }
 
+.title:hover {
+    color: firebrick;
+    cursor: crosshair;
+}
+
 /* ===================
     ALL: Orange Theme
    =================== */
