@@ -1,6 +1,6 @@
 <?php
 
-( @include_once( 'Config.php' ) ) or die( "\"Config.php\" is required to run this demo, but could not be found on the local server" );
+( @include_once('config.php')) or die( "\"config.php\" is required to run this demo, but could not be found on the local server" );
 ( @include_once( 'Alert.php' ) ) or die( "\"Alert.php\" is required to run this demo, but could not be found on the local server" );
 ( @include_once( 'Singleton.php' ) ) or die( "\"Singleton.php\" is required to run this demo, but could not be found on the local server" );
 

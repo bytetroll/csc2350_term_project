@@ -8,6 +8,6 @@ class Config {
 }
 
 Config::$ServerName = "localhost";
-Config::$Username = "GrandPoobah";
+Config::$Username = "grandpoobah";
 Config::$Password = "csc2350";
-Config::$DatabaseName = "Quizzer";
+Config::$DatabaseName = "quizzer";

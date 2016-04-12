@@ -6,7 +6,7 @@ if( isset( $_SESSION[ "User" ] ) != "" ) {
     header( "Location: ../UserHome.html" );
 }
 
-( @include_once( 'Server.php' ) ) or die( "\"Server.php\" is required to run this demo, but could not be found on the local server" );
+( @include_once('server.php')) or die( "\"server.php\" is required to run this demo, but could not be found on the local server" );
 
 $Server = Server::Reference();
 $Server->AttemptConnection();
@@ -17,10 +17,10 @@ if( isset( $_POST[ "SignUp" ] ) ) {
     $Email = mysqli_real_escape_string( $Server->Connection, $_POST[ "Email" ] );
     $Password = md5( mysqli_real_escape_string( $Server->Connection, $_POST[ "Password" ] ) );
 
-    if( $Server->ExecuteQuery( "INSERT INTO Users( Username, Email, Password ) VALUES( '$Username', '$Email', '$Password' )" ) ) {
-        header( "Location: ../RegistrationSuccessful.html" );
+    if( $Server->ExecuteQuery( "INSERT INTO users( username, email, password ) VALUES( '$Username', '$Email', '$Password' )" ) ) {
+        header( "Location: ../register_successful.html" );
     } else {
-        header( "Location: ../RegistrationUnsuccessful.html" );
+        header( "Location: ../register_unsuccessful.html" );
     }
 }
 
