@@ -11,7 +11,6 @@ if( isset( $_SESSION[ "User" ] ) != "" ) {
 $Server = Server::Reference();
 $Server->AttemptConnection();
 
-
 if( isset( $_POST[ "SignUp" ] ) ) {
     $Username = mysqli_real_escape_string( $Server->Connection, $_POST[ "Username" ] );
     $Email = mysqli_real_escape_string( $Server->Connection, $_POST[ "Email" ] );

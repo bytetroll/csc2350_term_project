@@ -7,7 +7,7 @@
                     Quizes Created:
                 </td>
                 <td>
-                    0
+                    <?= $QuizCount; ?>
                 </td>
             </tr>
             <tr>
@@ -15,7 +15,7 @@
                     Quizes Completed:
                 </td>
                 <td>
-                    0
+                    <?= $QuizCompletedCount; ?>
                 </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                     Quizes Visited:
                 </td>
                 <td>
-                    0
+                    <?= $QuizVisitedCount; ?>
                 </td>
             </tr>
         </table>

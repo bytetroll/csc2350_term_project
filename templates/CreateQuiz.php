@@ -2,7 +2,17 @@
     <header>
         <h1>Quiz Creation Wizard</h1>
         <p>Use the sidebar to edit and submit the quiz.</p>
-        <table id="QTable" style="margin-left: 25px; width: 600px;" width="30%" border="0">
+        <table style="margin-left: 25px; width: 300px;">
+            <tr>
+                <td>
+                    Quiz Name:
+                </td>
+                <td>
+                    <input type="text" id="Name" value="Excistensial Crisis Quiz"/>
+                </td>
+            </tr>
+        </table>
+        <table id="QTable" style="margin-top:10px; margin-left: 25px; width: 600px;" width="30%" border="0">
 
         </table>
     </header>
@@ -11,7 +21,10 @@
 <aside>
     <h3>Quick Actions</h3>
     <p><a href="#" id="OnAddQuestion">Add Question</a></p>
-    <p><a onclick="alert(ToJSON())" href="#">Submit</a></p>
+    <form id="target" method="post" action="../php/add_quiz.php">
+        <input type="text" id="QuizData" name="QuizData" hidden/>
+        <p><a onclick="$('#QuizData').val(ToJSON()); $('#target').submit();" href="#">Submit</a></p>
+    </form>
 </aside>
 
 <div style="visibility: hidden;">
@@ -30,6 +43,7 @@
         </tr>
         <tr id="ATemplate">
             <td>
+                <input type="radio" name="RN$id" id="RN$id" value="$aid" checked/>
                 <input type="text" id="AnswerN$idA$aid" style="height: 25px" value="$answer"/>
                 <button id="RemoveN$idA$aid">x</button>
             </td>
@@ -39,13 +53,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script>
-    String.prototype.replaceAllOccurances = function(search, replacement) {
+    String.prototype.replaceAllOccurances = function (search, replacement) {
         var target = this;
         return target.split(search).join(replacement);
     };
 
-    function AddAnswer(ID, Answer)
-    {
+    function AddAnswer(ID, Answer) {
         // Add Answer
         var IDA = AnswerCount(ID);
         $('#TN' + ID).append("<tr id='N" + ID + "A" + IDA + "'>" + $('#ATemplate').clone().html()
@@ -60,47 +73,44 @@
         });
     }
 
-    function AddQuestion(Header, DefaultAnswers)
-    {
+    function AddQuestion(Header, DefaultAnswers) {
         var ID = QuestionCount();
 
         // Insert Question
         $('#QTable').append(
             "<tr id='N" + ID + "' style='border-top: 20px solid #e44d26; height: 120px;'>" +
-            $( "#QTemplate" ).clone().html()
+            $("#QTemplate").clone().html()
                 .replaceAllOccurances("$header", Header)
                 .replaceAllOccurances("$id", ID) +
             "</tr>");
 
         // Insert Answers
-        $.each(DefaultAnswers, function(Idx, Answer) {
+        $.each(DefaultAnswers, function (Idx, Answer) {
             AddAnswer(ID, Answer);
         });
 
         // Create Question Remove Callback
-        $( "#RemoveN" + ID ).click(function() {
+        $("#RemoveN" + ID).click(function () {
             $("#N" + ID).remove();
         });
 
         // Add Answer Callback
-        $( "#AddN" + ID ).click(function() {
+        $("#AddN" + ID).click(function () {
             AddAnswer(ID, "...");
         });
     }
 
-    function ToJSON()
-    {
-        var PreJSON = [];
+    function ToJSON() {
+        var PreJSON = [$("#Name").val()];
 
         // For each question
         var QCount = QuestionCount();
-        for (var i = 0; i < QCount; i++)
-        {
-            var Answers = [];
+        for (var i = 0; i < QCount; i++) {
+            var Answers = [$('input[name=RN' + i + ']:checked').val()];
 
             // For each answer
             var k = AnswerCount(i);
-            for (var j = 0; j < k; j++)  {
+            for (var j = 0; j < k; j++) {
                 Answers.push($("#AnswerN" + i + "A" + j).val());
             }
 
@@ -112,21 +122,19 @@
         return JSON.stringify(PreJSON);
     }
 
-    function QuestionCount()
-    {
+    function QuestionCount() {
         return $('#QTable >tbody:last >tr').length;
     }
 
-    function AnswerCount(N)
-    {
+    function AnswerCount(N) {
         return $('#TN' + N + ' >tbody:last >tr').length;
     }
 
-    $( "#OnAddQuestion" ).click(function() {
+    $("#OnAddQuestion").click(function () {
         AddQuestion("Question", ["True", "False"]);
     });
 
-    $( document ).ready(function() {
+    $(document).ready(function () {
         // Add default answer
         AddQuestion("Am I a robot?", ["Yes", "How would I know?"]);
     });

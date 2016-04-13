@@ -1,7 +1,10 @@
 <?php
 
-function LoadLayout($Content)
+function LoadLayout($Content, $Variables)
 {
+    // ...
+    extract($Variables);
+
     // Load Content
     ob_start();
     include_once($Content);
@@ -9,5 +12,5 @@ function LoadLayout($Content)
     ob_end_clean();
 
     // Load Layout
-    include("../templates/Layout.php");
+    include_once("../templates/Layout.php");
 }
