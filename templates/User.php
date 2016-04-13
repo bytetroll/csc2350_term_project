@@ -1,31 +1,37 @@
-<div id="FormLogin">
-    <form method="post" action="php/Register.php">
-        <table align="center" width="30%" border="0">
+<article>
+    <header>
+        <h1>User Stats</h1>
+        <table style="margin-left: 25px" width="30%" border="0">
             <tr>
                 <td>
-                    <input type="text" name="Username" placeholder="Username" required />
+                    Quizes Created:
+                </td>
+                <td>
+                    0
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="email" name="Email" placeholder="Email" required />
+                    Quizes Completed:
+                </td>
+                <td>
+                    0
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="password" name="Password" placeholder="Password" required />
+                    Quizes Visited:
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    <button type="submit" name="SignUp"> Sign Me Up </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="php/Login.php"> Sign In Here </a>
+                    0
                 </td>
             </tr>
         </table>
-    </form>
-</div>
+    </header>
+</article>
+
+<aside>
+    <h3>Quick Actions</h3>
+    <p><a href="../views/CreateQuiz.php">Create Quiz</a></p>
+    <p><a href="../views/DeleteUser.php">Delete User</a></p>
+</aside>

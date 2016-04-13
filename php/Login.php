@@ -19,11 +19,11 @@ if( isset( $_POST[ "Login" ] ) ) {
     $Query = mysqli_query( $Server->Connection, "SELECT * FROM Users WHERE Email='$Email'" );
     $Row = mysqli_fetch_array( $Query );
 
-    if( $Row[ "Password" ] == md5( $Password) ) {
+    if( $Row[ "password" ] == md5( $Password) ) {
         $_SESSION[ "User" ] = $Row[ "UserID" ];
 
-        header( "Location: ../Home.html" );
+        header( "Location: ../views/User.php" );
     } else {
-        ShowAlert( "Incorrect login details" );
+        header( "Location: ../views/Login.php?e=badlogin" );
     }
 }

@@ -36,14 +36,15 @@
 
 <div class="footer-container">
     <footer class="wrapper">
-        <h3>Copyright (C) 2016 - Nathan Young</h3>
+        <h3>Madonna CSC2350 Term Project | Nathan Young</h3>
+        Open Source Licenses
     </footer>
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

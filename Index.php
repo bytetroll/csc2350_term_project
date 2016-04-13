@@ -1,8 +1,10 @@
 <?php
 
+session_start();
+
 if (isset($_SESSION[ "User" ]))
 {
-    header('Location: views/Home.php');
+    header('Location: views/User.php');
     die();
 }
 else

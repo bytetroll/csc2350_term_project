@@ -18,9 +18,9 @@ if( isset( $_POST[ "SignUp" ] ) ) {
     $Password = md5( mysqli_real_escape_string( $Server->Connection, $_POST[ "Password" ] ) );
 
     if( $Server->ExecuteQuery( "INSERT INTO users( username, email, password ) VALUES( '$Username', '$Email', '$Password' )" ) ) {
-        header( "Location: ../register_successful.html" );
+        header( "Location: ../views/User.php" );
     } else {
-        header( "Location: ../register_unsuccessful.html" );
+        header( "Location: ../views/Login.php?e=badlogin" );
     }
 }
 
