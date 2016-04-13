@@ -11,14 +11,14 @@
 <aside>
     <h3>Quick Actions</h3>
     <p><a href="#" id="OnAddQuestion">Add Question</a></p>
-    <p><a href="../php/CreateQuiz.php">Submit</a></p>
+    <p><a onclick="alert(ToJSON())" href="#">Submit</a></p>
 </aside>
 
 <div style="visibility: hidden;">
     <table>
         <tr id="QTemplate">
             <td style="padding: 10px; background-color: #F16529;">
-                <nobr><input type="text" style="height: 25px" value="$header"/></nobr>
+                <nobr><input type="text" id="HeaderN$id" style="height: 25px" value="$header"/></nobr>
                 <button id="RemoveN$id">x</button>
                 <button id="AddN$id">+</button>
             </td>
@@ -30,7 +30,7 @@
         </tr>
         <tr id="ATemplate">
             <td>
-                <input type="text" style="height: 25px" value="$answer"/>
+                <input type="text" id="AnswerN$idA$aid" style="height: 25px" value="$answer"/>
                 <button id="RemoveN$idA$aid">x</button>
             </td>
         </tr>
@@ -86,6 +86,30 @@
         $( "#AddN" + ID ).click(function() {
             AddAnswer(ID, "...");
         });
+    }
+
+    function ToJSON()
+    {
+        var PreJSON = [];
+
+        // For each question
+        var QCount = QuestionCount();
+        for (var i = 0; i < QCount; i++)
+        {
+            var Answers = [];
+
+            // For each answer
+            var k = AnswerCount(i);
+            for (var j = 0; j < k; j++)  {
+                Answers.push($("#AnswerN" + i + "A" + j).val());
+            }
+
+            // Append question
+            PreJSON.push([$("#HeaderN" + i).val(), Answers]);
+        }
+
+        // Stringify
+        return JSON.stringify(PreJSON);
     }
 
     function QuestionCount()
