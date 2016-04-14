@@ -24,8 +24,6 @@ $Pages = ceil($QuizCount / $CountPerPage);
     </header>
 </article>
 
-<span id="dump"></span>
-
 <div style="visibility: hidden;">
     <table>
         <tr id="Template">

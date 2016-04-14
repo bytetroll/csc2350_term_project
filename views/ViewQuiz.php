@@ -8,8 +8,12 @@ $Secure = array("ForceOnInvalid" => true, "ForceOnSession" => false);
 $Server = Server::Reference();
 $Server->AttemptConnection();
 
-LoadLayout("../templates/ViewQuiz.php", array(
-    "QuizCount" => mysqli_fetch_array(mysqli_query(
-        $Server->Connection, "SELECT count(*) as '_' FROM quizes"
-    ))["_"],
-));
+if (isset($_GET["ID"]))
+{
+    $Data = mysqli_fetch_array(mysqli_query($Server->Connection, "SELECT * FROM quizes WHERE QuizID=" . $_GET["ID"]));
+    LoadLayout("../templates/ViewQuiz.php", array(
+        "Data" => $Data["Data"],
+        "ID" => $_GET["ID"],
+        "Name" => $Data["Name"],
+    ));
+}

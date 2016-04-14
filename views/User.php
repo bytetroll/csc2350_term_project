@@ -8,17 +8,19 @@ $Secure = array("ForceOnInvalid" => true, "ForceOnSession" => false);
 $Server = Server::Reference();
 $Server->AttemptConnection();
 
+$UserID = $_SESSION["User"];
+
 LoadLayout("../templates/User.php", array(
     "QuizCount" => mysqli_fetch_array(mysqli_query(
         $Server->Connection,
-        "SELECT count(*) as '_' FROM quizes WHERE UserID=" . $_SESSION["User"]
+        "SELECT count(*) as '_' FROM quizes WHERE UserID=$UserID"
     ))["_"],
     "QuizCompletedCount" => mysqli_fetch_array(mysqli_query(
         $Server->Connection,
-        "SELECT count(*) as '_' FROM quizes_completed WHERE UserID=" . $_SESSION["User"]
+        "SELECT count(*) as '_' FROM quizes_completed WHERE UserID=$UserID"
     ))["_"],
     "QuizVisitedCount" => mysqli_fetch_array(mysqli_query(
         $Server->Connection,
-        "SELECT count(*) as '_' FROM quizes_completed WHERE OwnerID=" . $_SESSION["User"]
+        "SELECT count(*) as '_' FROM quizes_completed WHERE OwnerID=$UserID AND UserID<>$UserID"
     ))["_"],
 ));

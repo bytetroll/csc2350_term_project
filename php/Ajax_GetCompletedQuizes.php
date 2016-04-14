@@ -13,15 +13,15 @@ $UserID = $_SESSION["User"];
 $Start = $_POST["start"];
 $Limit =  max(0, min(20, $_POST["limit"]));
 
-$Query = mysqli_query($Server->Connection, "SELECT QuizID, Name, UserID FROM quizes ORDER BY QuizID desc LIMIT $Limit OFFSET $Start");
+$Query = mysqli_query($Server->Connection, "SELECT * FROM quizes_completed WHERE UserID=$UserID ORDER BY QuizCompletedID desc LIMIT $Limit OFFSET $Start");
 
 $Data = [];
 while($Row = mysqli_fetch_array($Query))
 {
     $Data[] = array(
-        "Name" => $Row["Name"],
-        "ID" => $Row["QuizID"],
-        "UserID" => mysqli_fetch_array(mysqli_query($Server->Connection, "SELECT username as '_' FROM users WHERE UserID=" . $Row["UserID"]))["_"]
+        "Grade" => $Row["Grade"],
+        "Name" => mysqli_fetch_array(mysqli_query($Server->Connection, "SELECT Name as '_' FROM quizes WHERE QuizID=" . $Row["QuizID"]))["_"],
+        "UserID" => mysqli_fetch_array(mysqli_query($Server->Connection, "SELECT username as '_' FROM users WHERE UserID=" . $Row["OwnerID"]))["_"]
     );
 }
 
